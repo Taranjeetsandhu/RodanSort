@@ -1,0 +1,72 @@
+package Mave_Project;
+
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+
+@Listeners(MyListeners.class)
+public class RodanTest {
+
+
+	static WebDriver driver;
+
+	RodanFieldsPage rodanFields;
+	
+	EnrollNowPage enrollNow;
+	
+
+
+	@BeforeMethod
+	public void setUp() throws InterruptedException{
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.rodanandfields.com/ca/");
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		rodanFields=new RodanFieldsPage(driver);
+		enrollNow=new EnrollNowPage(driver);
+		}
+	@Test
+	public void rodanFieldsTest1() throws InterruptedException{
+		rodanFields.shopCare();
+		Assert.assertTrue(rodanFields.verifyUrl().contains("quickShop"), "incorrect");
+		rodanFields.selectRedefine();
+		Assert.assertTrue(rodanFields.verifyLabel1(), "Labels not matching");
+		Assert.assertTrue(rodanFields.verifyLabel2(), "Labels not matching");
+		Assert.assertTrue(rodanFields.verifyPrice()>50 ,"Price not within range");
+		Assert.assertTrue(rodanFields.verifyPrice()<200,"Price not within range");
+		}
+
+
+	@Test
+	public void rodanFieldsTest2() throws InterruptedException{	
+		
+		enrollNow.enroll();
+		enrollNow.switchToProcedure();
+		Assert.assertTrue(enrollNow.verifyProcedureURL().contains("Policies_Procedures_CANADA."), "incorrect");
+		enrollNow.closeProcedure();
+		enrollNow.switchAndSearch();
+		Assert.assertEquals(enrollNow.AfterSelection().toLowerCase(), enrollNow.beforeSelection().toLowerCase(), "Names do not match");
+		
+		//enrollNow.quitBrowser2();
+	}
+	@AfterMethod
+	public void quitBrowser(){
+		driver.close();
+	}
+}
+
+
+
+
+
+

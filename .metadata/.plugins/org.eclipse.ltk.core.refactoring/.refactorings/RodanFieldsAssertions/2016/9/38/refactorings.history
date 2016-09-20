@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Enroll_Page.java&apos; to &apos;EnrollNowPage.java&apos;&#x0D;&#x0A;- Original project: &apos;RodanFieldsAssertions&apos;&#x0D;&#x0A;- Original element: &apos;Enroll_Page.java&apos;&#x0D;&#x0A;- Renamed element: &apos;EnrollNowPage.java&apos;" description="Rename compilation unit &apos;Enroll_Page.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src\/test\/java&lt;{Enroll_Page.java" name="EnrollNowPage.java" references="false" stamp="1473767704465" version="1.0"/>
+</session>
