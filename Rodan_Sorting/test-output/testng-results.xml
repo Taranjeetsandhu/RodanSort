@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="28913" started-at="2016-09-22T07:38:41Z" finished-at="2016-09-22T07:39:10Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="28913" started-at="2016-09-22T07:38:41Z" finished-at="2016-09-22T07:39:10Z">
+      <class name="Rodan_Sort.SortTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:Rodan_Sort.SortTest@124022f3]" name="setUp" is-config="true" duration-ms="11836" started-at="2016-09-22T13:08:41Z" finished-at="2016-09-22T13:08:53Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="rodanFieldsTest1()[pri:0, instance:Rodan_Sort.SortTest@124022f3]" name="rodanFieldsTest1" duration-ms="16449" started-at="2016-09-22T13:08:53Z" finished-at="2016-09-22T13:09:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- rodanFieldsTest1 -->
+        <test-method status="PASS" signature="quitBrowser()[pri:0, instance:Rodan_Sort.SortTest@124022f3]" name="quitBrowser" is-config="true" duration-ms="607" started-at="2016-09-22T13:09:10Z" finished-at="2016-09-22T13:09:10Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quitBrowser -->
+      </class> <!-- Rodan_Sort.SortTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

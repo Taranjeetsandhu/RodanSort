@@ -1,0 +1,45 @@
+package Rodan_Sort;
+
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+
+
+public class SortTest {
+
+	static WebDriver driver;
+SortPage Sort;
+
+	@BeforeMethod
+	public void setUp() throws InterruptedException{
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.rodanandfields.com/ca/");
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		Sort=new SortPage(driver);
+
+	}
+	
+	@Test
+	public void rodanFieldsTest1() throws InterruptedException{	
+		
+		
+		Sort.shopCare();
+		Sort.clickOnHighToLow();
+		Sort.getPriceFirstProduct();
+		Sort.getPriceSecondProduct();
+		//System.out.println(Sort.getPriceFirstProduct()>Sort.getPriceSecondProduct());
+//		Assert.assertTrue("Second price is greater than first",Sort.getPriceFirstProduct()>Sort.getPriceSecondProduct());
+		Sort.getPriceThirdProduct();
+		//System.out.println(Sort.getPriceSecondProduct()>Sort.getPriceThirdProduct());
+		//Assert.assertTrue("Third price is greater than second",Sort.getPriceSecondProduct()>Sort.getPriceThirdProduct());
+		
+	
+	}
+	}
+

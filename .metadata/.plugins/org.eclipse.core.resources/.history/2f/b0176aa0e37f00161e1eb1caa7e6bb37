@@ -1,0 +1,15 @@
+package Rodan_Sort;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+
+public class SortPage {
+
+	
+	WebDriver driver;
+	public  SortPage (WebDriver driver){
+		this.driver=driver;
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+}

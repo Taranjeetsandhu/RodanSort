@@ -1,0 +1,93 @@
+package Rodan_Sort;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class SortPage {
+
+	
+	WebDriver driver;
+	By shopCare=By.xpath("//div[@class='hidden-xs']//a[@id='our-products']");
+	By all=By.xpath("//ul[@id='dropdown-menu']/li[7]/div/a");
+	By select=By.xpath("//select[@id='sortOptions']");
+	By highToLow=By.xpath("//select[@id='sortOptions']/option[2]");
+	By priceOfFirstProduct=By.xpath("//div[@id='main-content']/div[5]/div[1]//span");
+	By priceOfSecondProduct=By.xpath("//div[@id='main-content']/div[5]/div[2]//span");
+	By priceOfThirdProduct=By.xpath("//div[@id='main-content']/div[5]/div[3]//span");
+	
+	
+	public  SortPage (WebDriver driver){
+		this.driver=driver;
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+	
+	public void shopCare() throws InterruptedException
+	{
+
+		driver.findElement(shopCare).click();
+		Thread.sleep(5000);
+		driver.findElement(all).click();
+	
+	}
+	public void clickOnHighToLow() throws InterruptedException
+	{
+
+		driver.findElement(select).click();
+		Thread.sleep(5000);
+		driver.findElement(highToLow).click();
+	
+	}
+	
+	/*public int getPriceFirstProduct(){
+		String s1=driver.findElement(priceOfFirstProduct).getText();
+		System.out.println(s1);
+		String[] sa= s1.split(" ");
+		String price1=sa[1];
+		System.out.println(sa[1]);
+		int i1 = Integer.parseInt(price1);
+		System.out.println(i1);
+		return i1;
+		}*/
+
+	public void waitForElementVisible(WebElement e){
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(e));
+	}
+	
+	public int getPriceSecondProduct(){
+		try{
+		String s2=driver.findElement(priceOfSecondProduct).getText();
+		System.out.println(s2);
+		String[] sa= s2.split(" ");
+		String price2=sa[1];
+		System.out.println(sa[1]);
+		int i2 = Integer.parseInt(price2);
+		System.out.println(i2);
+		return i2;
+		}
+		catch(Exception e){
+			;}
+		}
+
+	public void waitForElementVisible2(WebElement f){
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.visibilityOf(f));
+	}
+	
+	public int getPriceThirdProduct(){
+		String s3=driver.findElement(priceOfSecondProduct).getText();
+		System.out.println(s3);
+		String[] sa= s3.split(" ");
+		String price3=sa[1];
+		System.out.println(sa[1]);
+		int i3 = Integer.parseInt(price3);
+		System.out.println(i3);
+		return i3;
+		}
+
+}

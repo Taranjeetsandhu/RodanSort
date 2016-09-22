@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="MavenProjectWizardArchetypePage">
+		<item value="All Catalogs" key="catalog"/>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
 			<item value="[artifactId]-TRUNK"/>
@@ -53,11 +54,13 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
+			<item value="Rodan_Sorting"/>
 			<item value="RodanFieldsAssertions"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Rodan_Sorting"/>
 			<item value="RodanFieldsAssertions"/>
 		</list>
 		<list key="projectNameTemplate">

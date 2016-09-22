@@ -1,0 +1,38 @@
+package Rodan_Sort;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SortPage {
+
+	
+	WebDriver driver;
+	By shopCare=By.xpath("//div[@class='hidden-xs']//a[@id='our-products']");
+	By all=By.xpath("//ul[@id='dropdown-menu']/li[7]/div/a");
+	By select=By.xpath("//select[@id='sortOptions']");
+	By highToLow=By.xpath("//select[@id='sortOptions']/option[2]");
+	By priceOfFirstProduct=By.xpath("//div[@id='main-content']/div[5]/div[1]//span");
+	By priceOfSecondProduct=By.xpath("//div[@id='main-content']/div[5]/div[2]//span");
+	By priceOfThirdProduct=By.xpath("//div[@id='main-content']/div[5]/div[3]//span");
+	
+	
+	public  SortPage (WebDriver driver){
+		this.driver=driver;
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+	
+	
+	public int verifyPrice(){
+		String s=driver.findElement(priceOfFirstProduct).getText();
+		System.out.println(s);
+		String[] sa= s.split(" ");
+		String price=sa[1];
+		System.out.println(sa[1]);
+		int i = Integer.parseInt(price);
+		System.out.println(i);
+		return i;
+		}
+
+}

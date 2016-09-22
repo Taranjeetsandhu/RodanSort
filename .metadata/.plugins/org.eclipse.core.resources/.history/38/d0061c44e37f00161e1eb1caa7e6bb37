@@ -1,0 +1,25 @@
+package Rodan_Sort;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.BeforeMethod;
+
+
+
+public class Sort_Test {
+
+	static WebDriver driver;
+SortPage Sort;
+
+	@BeforeMethod
+	public void setUp() throws InterruptedException{
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.rodanandfields.com/ca/");
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		Sort=new SortPage(driver);
+
+	}
+}
