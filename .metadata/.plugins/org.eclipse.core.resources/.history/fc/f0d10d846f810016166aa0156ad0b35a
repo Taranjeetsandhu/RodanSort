@@ -1,0 +1,49 @@
+package RodanAddProducts;
+import java.util.concurrent.TimeUnit;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import Rodan_Sort.SortPage;
+
+
+public class AddProductsTest {
+
+	WebDriver driver;
+	AddProductsPage add;
+
+	@BeforeMethod
+	public void setUp() throws InterruptedException{
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.rodanandfields.com/ca/");
+		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
+		add=new AddProductsPage(driver);
+	}
+
+	@Test
+	public void testRodanFields() throws InterruptedException{	
+		add.shopCare();
+		add.selectRedefineAndReverse();
+		Assert.assertTrue("Redefine not present",add.isRedefinePresent());
+		Assert.assertTrue("Reverse not present",add.isReversePresent());
+		add.clickPrdAndAddQuantity();
+		String s1=add.getSubTotal();
+		Assert.assertTrue("Mismatched value",s1.contains("CAD$ 2,530.00"));
+		add.clickOnAnotherPrd();
+		Assert.assertTrue("Two items are not present",add.verifyCartItem());
+		add.clickOnDelete();
+	}
+
+	/*@AfterMethod
+	public void quitBrowser(){
+		driver.quit();
+	}*/
+}
+
+

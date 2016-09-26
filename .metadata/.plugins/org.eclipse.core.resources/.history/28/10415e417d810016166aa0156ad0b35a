@@ -1,0 +1,127 @@
+package RodanAddProducts;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+public class AddProductsPage {
+	WebDriver driver;
+	By shopCare=By.xpath("//div[@class='hidden-xs']//a[@id='our-products']");
+	By all=By.xpath("//ul[@id='dropdown-menu']/li[7]/div/a");
+	By selectRedefine=By.xpath("//div[@id='main-content']//div[2]//input[@tabindex='1']");
+	By refine=By.xpath("//div[@class='dropdown-wrapper']//li[1]//div[@class='pull-right']/div");
+	By reverse=By.xpath("//ul[@class='refine-products select-dropdown open']/li[2]//div[@class='repaired-checkbox']");
+	By redefineTitle=By.xpath("//div[@id='main-content']/div[4]/h2");
+	By reverseTitle=By.xpath("//div[@class='quick-shop-section-header']/h2");
+	By clickProduct1Image=By.xpath("//div[@id='main-content']/div[5]/div[1]/div[1]/a[1]");
+	By clickProduct1=By.xpath("//div[@id='main-content']/div[5]/div[1]/div[1]/a[2]/input");
+	By addToBag=By.xpath("//input[@value='ADD TO BAG']");
+	By quantity=By.xpath("//input[@id='quantity0']");
+	By update=By.xpath("//a[@class='updateLink']");
+	By subTotal=By.xpath("//div[@id='subtotal-shopping']//span");
+	By continueShopping=By.xpath("//a[contains(text(),'Continue shopping')]");
+	By clickProduct2Image=By.xpath("//div[@id='main-content']/div[5]/div[2]/div[1]/a[1]/img");
+	By clickProduct2=By.xpath("//div[@id='main-content']/div[5]/div[2]/div[1]/a[2]/input");
+	By cartItems=By.xpath("//div[@class='cartItems']/div[@class='shopping-item crp-summary-col']");
+	By delete=By.xpath("//a[contains(text(),'Delete')]");
+
+
+	//ArrayList<String> options = new ArrayList<String>();
+
+	public  AddProductsPage(WebDriver driver){
+		this.driver=driver;
+
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	public void shopCare() throws InterruptedException{
+		driver.findElement(shopCare).click();
+		Thread.sleep(5000);
+		driver.findElement(all).click();
+	}
+
+
+
+	public void selectRedefineAndReverse() throws InterruptedException
+	{
+		String xpath="//ul[@class='refine-products select-dropdown open']//div[@class='repaired-checkbox']";
+		driver.findElement(selectRedefine).click();
+		Thread.sleep(3000);
+		driver.findElement(refine).click();;
+		Thread.sleep(3000);
+		driver.findElement(selectRedefine).click();
+		Thread.sleep(3000);
+		driver.findElement(reverse).click();
+
+
+	}
+
+
+	public boolean isElementPresent(By by) {
+		try {
+			driver.findElement(by);
+			return true;
+		} catch (org.openqa.selenium.NoSuchElementException e) {
+			return false;
+		}
+	}
+
+	public boolean isRedefinePresent(){
+		return isElementPresent(redefineTitle);
+	}
+
+	public boolean isReversePresent(){
+		return isElementPresent(reverseTitle);
+	}
+
+	public void clickPrdAndAddQuantity() throws InterruptedException{
+
+		Actions action=new Actions(driver);
+		action.moveToElement(driver.findElement(clickProduct1Image)).build().perform();
+		Thread.sleep(5000);
+		driver.findElement(clickProduct1).click();
+		Thread.sleep(5000);
+
+		driver.findElement(addToBag).click();
+		driver.findElement(quantity).sendKeys("0");
+		driver.findElement(update).click();
+		Thread.sleep(5000);
+	}
+
+	public String getSubTotal(){
+		return driver.findElement(subTotal).getText();
+	}
+
+	public void clickOnAnotherPrd() throws InterruptedException{
+		driver.findElement(continueShopping).click();
+		Actions action=new Actions(driver);
+		action.moveToElement(driver.findElement(clickProduct2Image)).build().perform();
+		Thread.sleep(5000);
+		driver.findElement(clickProduct2).click();
+		Thread.sleep(5000);
+		driver.findElement(addToBag).click();
+		Thread.sleep(5000);
+	}
+
+	public int verifyCartItem(){
+
+		  List <WebElement> weblist = driver.findElements(cartItems);
+		  int size = weblist.size();
+	      System.out.println(size);
+				return size;
+	}
+
+
+	public void clickOnDelete(){
+
+		driver.findElement(delete).click();
+	}
+
+}
+
